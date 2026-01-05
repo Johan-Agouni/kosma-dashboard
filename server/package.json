@@ -1,0 +1,58 @@
+{
+    "name": "kosma-server",
+    "version": "1.0.0",
+    "description": "Kosma e-commerce dashboard API - Node.js, Express, MongoDB, JWT authentication",
+    "main": "src/server.js",
+    "scripts": {
+        "start": "node src/server.js",
+        "dev": "nodemon src/server.js",
+        "test": "cross-env NODE_ENV=test jest --coverage --forceExit",
+        "test:watch": "cross-env NODE_ENV=test jest --watch",
+        "lint": "eslint src/ tests/",
+        "lint:fix": "eslint src/ tests/ --fix",
+        "format": "prettier --write \"src/**/*.js\" \"tests/**/*.js\"",
+        "format:check": "prettier --check \"src/**/*.js\" \"tests/**/*.js\"",
+        "seed": "node seed/seed.js"
+    },
+    "keywords": [
+        "ecommerce",
+        "dashboard",
+        "api",
+        "nodejs",
+        "express",
+        "mongodb",
+        "jwt",
+        "security"
+    ],
+    "author": "Johan Agouni",
+    "license": "MIT",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "express-mongo-sanitize": "^2.2.0",
+        "express-rate-limit": "^7.5.0",
+        "express-validator": "^7.0.1",
+        "helmet": "^7.1.0",
+        "hpp": "^0.2.3",
+        "jsonwebtoken": "^9.0.2",
+        "mongoose": "^8.9.5",
+        "multer": "^1.4.5-lts.1",
+        "swagger-jsdoc": "^6.2.8",
+        "swagger-ui-express": "^5.0.1",
+        "winston": "^3.11.0",
+        "winston-daily-rotate-file": "^4.7.1"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.39.0",
+        "cross-env": "^10.1.0",
+        "eslint": "^9.39.2",
+        "eslint-config-prettier": "^10.1.8",
+        "jest": "^30.2.0",
+        "mongodb-memory-server": "^10.4.0",
+        "nodemon": "^3.1.9",
+        "prettier": "^3.8.0",
+        "supertest": "^7.2.2"
+    }
+}

@@ -1,0 +1,11 @@
+node_modules
+coverage
+logs
+.env
+.env.local
+*.log
+.git
+.github
+docker-data
+client/cypress/videos
+client/cypress/screenshots
