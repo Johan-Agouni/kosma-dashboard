@@ -1,0 +1,23 @@
+[
+    {
+        "email": "admin@kosma.dev",
+        "password": "Admin123!",
+        "firstName": "Johan",
+        "lastName": "Agouni",
+        "role": "admin"
+    },
+    {
+        "email": "manager@kosma.dev",
+        "password": "Manager123!",
+        "firstName": "Nadia",
+        "lastName": "Belkacem",
+        "role": "manager"
+    },
+    {
+        "email": "viewer@kosma.dev",
+        "password": "Viewer123!",
+        "firstName": "Romain",
+        "lastName": "Vidal",
+        "role": "viewer"
+    }
+]

@@ -1,0 +1,42 @@
+[
+    {
+        "customer": { "name": "Yassine Khelifi", "email": "yassine.k@proton.me", "phone": "0651239874", "address": { "street": "28 rue Espariat", "city": "Aix-en-Provence", "zipCode": "13100", "country": "FR" } },
+        "status": "delivered", "paymentStatus": "paid", "paymentMethod": "card"
+    },
+    {
+        "customer": { "name": "Camille Fabre", "email": "camille.fabre@posteo.net", "phone": "0789012345", "address": { "street": "14 quai de la Pecherie", "city": "Lyon", "zipCode": "69001", "country": "FR" } },
+        "status": "shipped", "paymentStatus": "paid", "paymentMethod": "card"
+    },
+    {
+        "customer": { "name": "Mehdi Bouaziz", "email": "mehdi.bz@gmail.com", "phone": "0672345198", "address": { "street": "3 traverse du Murier", "city": "Marseille", "zipCode": "13006", "country": "FR" } },
+        "status": "confirmed", "paymentStatus": "paid", "paymentMethod": "paypal"
+    },
+    {
+        "customer": { "name": "Louise Parmentier", "email": "l.parmentier@free.fr", "phone": "0634128795", "address": { "street": "71 rue de Metz", "city": "Toulouse", "zipCode": "31000", "country": "FR" } },
+        "status": "pending", "paymentStatus": "pending", "paymentMethod": "bank_transfer"
+    },
+    {
+        "customer": { "name": "Amine Djerbi", "email": "amine.djerbi@hey.com", "phone": "0698451237", "address": { "street": "5 rue des Tanneurs", "city": "Montpellier", "zipCode": "34000", "country": "FR" } },
+        "status": "pending", "paymentStatus": "pending", "paymentMethod": "card"
+    },
+    {
+        "customer": { "name": "Yassine Khelifi", "email": "yassine.k@proton.me", "phone": "0651239874", "address": { "street": "28 rue Espariat", "city": "Aix-en-Provence", "zipCode": "13100", "country": "FR" } },
+        "status": "confirmed", "paymentStatus": "paid", "paymentMethod": "card"
+    },
+    {
+        "customer": { "name": "Inès Castellano", "email": "ines.cast@outlook.fr", "phone": "0745612389", "address": { "street": "22 cours Julien", "city": "Marseille", "zipCode": "13006", "country": "FR" } },
+        "status": "delivered", "paymentStatus": "paid", "paymentMethod": "card"
+    },
+    {
+        "customer": { "name": "Théo Music", "email": "theo.music@icloud.com", "phone": "0667893214", "address": { "street": "9 cours Mirabeau", "city": "Aix-en-Provence", "zipCode": "13100", "country": "FR" } },
+        "status": "cancelled", "paymentStatus": "refunded", "paymentMethod": "paypal"
+    },
+    {
+        "customer": { "name": "Camille Fabre", "email": "camille.fabre@posteo.net", "phone": "0789012345", "address": { "street": "14 quai de la Pecherie", "city": "Lyon", "zipCode": "69001", "country": "FR" } },
+        "status": "delivered", "paymentStatus": "paid", "paymentMethod": "card"
+    },
+    {
+        "customer": { "name": "Samir Ouhab", "email": "samir.ouhab@pm.me", "phone": "0623897451", "address": { "street": "18 boulevard Longchamp", "city": "Marseille", "zipCode": "13001", "country": "FR" } },
+        "status": "shipped", "paymentStatus": "paid", "paymentMethod": "card"
+    }
+]

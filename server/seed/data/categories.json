@@ -1,0 +1,8 @@
+[
+    { "name": "Electronique", "description": "Audio haut de gamme, peripheriques et composants pour setups creatifs" },
+    { "name": "Vetements", "description": "Pieces streetwear et essentiels du vestiaire contemporain" },
+    { "name": "Maison & Jardin", "description": "Objets de decoration, mobilier artisanal et plantes d'interieur" },
+    { "name": "Sports & Loisirs", "description": "Materiel d'escalade, running trail et outdoor" },
+    { "name": "Livres", "description": "Dev, design, essais et romans graphiques" },
+    { "name": "Alimentation", "description": "Torrefacteurs independants, thes rares et epicerie d'exception" }
+]
