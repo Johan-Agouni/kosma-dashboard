@@ -1,0 +1,59 @@
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    padding: var(--spacing-xl);
+    min-height: 100vh;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Bouton hamburger — masque par defaut, visible sur mobile */
+.menuBtn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    margin-bottom: var(--spacing-md);
+    transition: all var(--transition-fast);
+}
+
+.menuBtn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+/* Overlay sombre derriere la sidebar sur mobile */
+.overlay {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .main {
+        margin-left: 0;
+        padding: var(--spacing-md);
+    }
+
+    .menuBtn {
+        display: flex;
+    }
+
+    .overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(2px);
+        z-index: 99;
+        animation: fadeIn 0.2s ease-out;
+    }
+}
