@@ -1,0 +1,82 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-xl);
+}
+
+.chartTitle {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-primary);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    text-align: left;
+    padding: 0.75rem;
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.table td {
+    padding: 0.75rem;
+    font-size: var(--font-size-sm);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.table tbody tr {
+    position: relative;
+    transition: background var(--transition-fast);
+}
+
+.table tbody tr:nth-child(even) {
+    background: color-mix(in srgb, var(--color-bg-hover) 40%, transparent);
+}
+
+.table tbody tr:hover {
+    background: var(--color-bg-hover);
+}
+
+.table tbody tr::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--color-accent);
+    border-radius: 0 2px 2px 0;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.table tbody tr:hover::after {
+    opacity: 1;
+}
+
+.orderNum {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: var(--font-size-xs);
+    color: var(--color-accent);
+    letter-spacing: 0.02em;
+}
+
+.dateCell {
+    color: var(--color-text-secondary);
+}
