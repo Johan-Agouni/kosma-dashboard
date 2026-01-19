@@ -1,0 +1,52 @@
+﻿version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7
+    container_name: kosma-mongodb
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - kosma-network
+    restart: unless-stopped
+
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    container_name: kosma-api
+    ports:
+      - '5000:5000'
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongodb:27017/kosma
+      - JWT_SECRET=kosma-production-jwt-secret-change-me
+      - JWT_REFRESH_SECRET=kosma-production-refresh-secret-change-me
+      - CORS_ORIGIN=http://localhost:3000
+    depends_on:
+      - mongodb
+    networks:
+      - kosma-network
+    restart: unless-stopped
+
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: kosma-client
+    ports:
+      - '3000:80'
+    depends_on:
+      - server
+    networks:
+      - kosma-network
+    restart: unless-stopped
+
+volumes:
+  mongodb_data:
+
+networks:
+  kosma-network:
+    driver: bridge
