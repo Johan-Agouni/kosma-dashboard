@@ -21,6 +21,18 @@ Full-stack React + Node.js + MongoDB admin dashboard with JWT authentication, ro
 
 ---
 
+## Apercu
+
+| Login | Dashboard |
+|:---:|:---:|
+| ![Login](docs/screenshots/login.png) | ![Dashboard](docs/screenshots/dashboard.png) |
+
+| Produits | Detail commande |
+|:---:|:---:|
+| ![Produits](docs/screenshots/products.png) | ![Commande](docs/screenshots/order-detail.png) |
+
+---
+
 ## Fonctionnalites
 
 ### Frontend (React 18)
