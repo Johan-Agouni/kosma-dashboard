@@ -60,61 +60,6 @@ app.get('/health', (_req, res) => {
     });
 });
 
-// ─── Seed Endpoint (temporaire — a retirer apres le premier seed) ─
-app.post('/api/v1/seed', async (req, res) => {
-    const key = req.headers['x-seed-key'];
-    if (key !== 'kosma-seed-2024-secret') {
-        return res.status(403).json({ message: 'Forbidden' });
-    }
-    try {
-        const User = require('./models/User');
-        const Category = require('./models/Category');
-        const Product = require('./models/Product');
-        const Order = require('./models/Order');
-        const usersData = require('../seed/data/users.json');
-        const categoriesData = require('../seed/data/categories.json');
-        const productsData = require('../seed/data/products.json');
-        const ordersData = require('../seed/data/orders.json');
-
-        const CATEGORY_BY_SKU_PREFIX = {
-            ELEC: 'Electronique', VET: 'Vetements',
-            MAI: 'Maison & Jardin', SPO: 'Sports & Loisirs',
-            LIV: 'Livres', ALI: 'Alimentation',
-        };
-
-        await Promise.all([User.deleteMany({}), Category.deleteMany({}), Product.deleteMany({}), Order.deleteMany({})]);
-        const users = await User.create(usersData);
-        const categories = await Category.create(categoriesData);
-        const categoryMap = {};
-        categories.forEach(cat => { categoryMap[cat.name] = cat._id; });
-        const productDocs = productsData.map(p => {
-            const prefix = p.sku.split('-')[0];
-            return { ...p, category: categoryMap[CATEGORY_BY_SKU_PREFIX[prefix] || 'Electronique'], createdBy: users[0]._id };
-        });
-        const products = await Product.create(productDocs);
-        const orders = [];
-        for (const orderData of ordersData) {
-            const numItems = Math.floor(Math.random() * 3) + 1;
-            const items = [];
-            let subtotal = 0;
-            for (let i = 0; i < numItems; i++) {
-                const product = products[Math.floor(Math.random() * products.length)];
-                const quantity = Math.floor(Math.random() * 3) + 1;
-                const total = product.price * quantity;
-                items.push({ product: product._id, name: product.name, price: product.price, quantity, total });
-                subtotal += total;
-            }
-            const tax = Math.round(subtotal * 0.2 * 100) / 100;
-            const shippingCost = subtotal > 50 ? 0 : 5.99;
-            const order = await Order.create({ ...orderData, items, subtotal, tax, shippingCost, total: Math.round((subtotal + tax + shippingCost) * 100) / 100 });
-            orders.push(order);
-        }
-        res.json({ status: 'ok', users: users.length, categories: categories.length, products: products.length, orders: orders.length });
-    } catch (error) {
-        res.status(500).json({ message: 'Seed failed', error: error.message });
-    }
-});
-
 // ─── API Routes ──────────────────────────────────────────────────
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/products', productRoutes);
