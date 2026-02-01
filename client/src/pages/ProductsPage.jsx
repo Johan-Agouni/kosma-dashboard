@@ -41,7 +41,7 @@ const ProductsPage = () => {
     const fetchProducts = async () => {
         setLoading(true);
         try {
-            const params = { page, limit: 20 };
+            const params = { page, limit: 50 };
             if (debouncedSearch) params.search = debouncedSearch;
             if (statusFilter) params.status = statusFilter;
             const { data } = await getProductsApi(params);
