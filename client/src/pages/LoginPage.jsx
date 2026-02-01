@@ -31,10 +31,25 @@ const LoginPage = () => {
                 <div className={styles.logo}>
                     <span className={styles.logoIcon}>
                         <svg viewBox="0 0 100 100" width="28" height="28">
-                            <path d="M20 15 L20 85" stroke="currentColor" strokeWidth="14" strokeLinecap="round"/>
-                            <path d="M20 52 L50 85" stroke="currentColor" strokeWidth="14" strokeLinecap="round"/>
-                            <path d="M20 52 L65 15" stroke="currentColor" strokeWidth="14" strokeLinecap="round"/>
-                            <polygon points="65,15 72,32 56,27" fill="currentColor"/>
+                            <path
+                                d="M20 15 L20 85"
+                                stroke="currentColor"
+                                strokeWidth="14"
+                                strokeLinecap="round"
+                            />
+                            <path
+                                d="M20 52 L50 85"
+                                stroke="currentColor"
+                                strokeWidth="14"
+                                strokeLinecap="round"
+                            />
+                            <path
+                                d="M20 52 L65 15"
+                                stroke="currentColor"
+                                strokeWidth="14"
+                                strokeLinecap="round"
+                            />
+                            <polygon points="65,15 72,32 56,27" fill="currentColor" />
                         </svg>
                     </span>
                     <h1>Kosma</h1>
