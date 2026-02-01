@@ -49,7 +49,12 @@ const Sidebar = ({ open, onClose }) => {
         >
             <div className={styles.logo}>
                 <span className={styles.logoIcon} aria-hidden="true">
-                    K
+                    <svg viewBox="0 0 100 100" width="22" height="22">
+                        <path d="M20 15 L20 85" stroke="currentColor" strokeWidth="14" strokeLinecap="round"/>
+                        <path d="M20 52 L50 85" stroke="currentColor" strokeWidth="14" strokeLinecap="round"/>
+                        <path d="M20 52 L65 15" stroke="currentColor" strokeWidth="14" strokeLinecap="round"/>
+                        <polygon points="65,15 72,32 56,27" fill="currentColor"/>
+                    </svg>
                 </span>
                 <span className={styles.logoText}>Kosma</span>
             </div>
