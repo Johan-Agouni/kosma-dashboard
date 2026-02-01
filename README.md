@@ -9,7 +9,15 @@ Full-stack React + Node.js + MongoDB admin dashboard with JWT authentication, ro
 ![React](https://img.shields.io/badge/react-18-61dafb)
 ![MongoDB](https://img.shields.io/badge/mongodb-7-47a248)
 
-> Projet de demonstration full-stack. Donnees fictives generees par le script de seed.
+### Demo live
+
+| Service | URL |
+|---------|-----|
+| **Application** | [kosma-dashboard.vercel.app](https://kosma-dashboard.vercel.app) |
+| **API REST** | [kosma-dashboard-production.up.railway.app](https://kosma-dashboard-production.up.railway.app/health) |
+| **Documentation API** | [Swagger UI](https://kosma-dashboard-production.up.railway.app/api-docs) |
+
+> Projet de demonstration full-stack deploye sur Vercel (frontend) et Railway (API + MongoDB). Donnees fictives generees par le script de seed.
 
 ---
 
@@ -46,7 +54,8 @@ Full-stack React + Node.js + MongoDB admin dashboard with JWT authentication, ro
 - Noms de fichiers aleatoires (crypto.randomBytes)
 - TTL automatique sur les tokens et logs d'audit
 
-### DevOps
+### DevOps & Deploiement
+- **Production** : Vercel (frontend) + Railway (API + MongoDB)
 - Docker & Docker Compose (API + MongoDB + Client Nginx)
 - CI/CD GitHub Actions (lint, tests, audit securite)
 - Tests unitaires + integration (Jest + Supertest)
@@ -114,7 +123,7 @@ npm run dev
 
 ## Documentation API
 
-Documentation interactive Swagger disponible a : `http://localhost:5000/api-docs`
+Documentation interactive Swagger disponible a : [https://kosma-dashboard-production.up.railway.app/api-docs](https://kosma-dashboard-production.up.railway.app/api-docs) (ou `http://localhost:5000/api-docs` en local)
 
 ### Endpoints principaux
 
@@ -186,6 +195,7 @@ kosma-dashboard/
 | **Securite** | Helmet, bcrypt, express-rate-limit, express-mongo-sanitize, hpp |
 | **Tests** | Jest, Supertest, Vitest, React Testing Library, Cypress |
 | **DevOps** | Docker, docker-compose, GitHub Actions, ESLint 9, Prettier |
+| **Deploiement** | Vercel (frontend), Railway (API + MongoDB) |
 
 ---
 
