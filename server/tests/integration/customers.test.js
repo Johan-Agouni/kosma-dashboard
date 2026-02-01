@@ -38,13 +38,15 @@ describe('Customer Routes', () => {
                     email: 'alice@test.com',
                     address: { city: 'Paris', country: 'FR' },
                 },
-                items: [{
-                    product: product._id,
-                    name: 'Product',
-                    price: 10,
-                    quantity: 1,
-                    total: 10,
-                }],
+                items: [
+                    {
+                        product: product._id,
+                        name: 'Product',
+                        price: 10,
+                        quantity: 1,
+                        total: 10,
+                    },
+                ],
                 subtotal: 10,
                 total: 12,
             });
@@ -56,13 +58,15 @@ describe('Customer Routes', () => {
                 email: 'bob@test.com',
                 address: { city: 'Lyon', country: 'FR' },
             },
-            items: [{
-                product: product._id,
-                name: 'Product',
-                price: 10,
-                quantity: 2,
-                total: 20,
-            }],
+            items: [
+                {
+                    product: product._id,
+                    name: 'Product',
+                    price: 10,
+                    quantity: 2,
+                    total: 20,
+                },
+            ],
             subtotal: 20,
             total: 24,
         });

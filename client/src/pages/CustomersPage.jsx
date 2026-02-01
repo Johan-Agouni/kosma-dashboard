@@ -41,7 +41,14 @@ const CustomersPage = () => {
             <Header title="Clients" />
             <div className={styles.content}>
                 <div className="page-header">
-                    <SearchBar value={search} onChange={v => { setSearch(v); setPage(1); }} placeholder="Rechercher un client..." />
+                    <SearchBar
+                        value={search}
+                        onChange={v => {
+                            setSearch(v);
+                            setPage(1);
+                        }}
+                        placeholder="Rechercher un client..."
+                    />
                 </div>
 
                 {loading ? (
@@ -62,14 +69,31 @@ const CustomersPage = () => {
                                 {customers.map(c => (
                                     <tr key={c._id}>
                                         <td style={{ fontWeight: 500 }}>{c.name}</td>
-                                        <td style={{ color: 'var(--color-text-secondary)' }}>{c.email}</td>
+                                        <td style={{ color: 'var(--color-text-secondary)' }}>
+                                            {c.email}
+                                        </td>
                                         <td>{c.totalOrders}</td>
-                                        <td style={{ fontWeight: 500 }}>{formatCurrency(c.totalSpent)}</td>
-                                        <td className={styles.dateCell}>{formatDate(c.lastOrderDate)}</td>
+                                        <td style={{ fontWeight: 500 }}>
+                                            {formatCurrency(c.totalSpent)}
+                                        </td>
+                                        <td className={styles.dateCell}>
+                                            {formatDate(c.lastOrderDate)}
+                                        </td>
                                     </tr>
                                 ))}
                                 {customers.length === 0 && (
-                                    <tr><td colSpan={5} style={{ textAlign: 'center', padding: '2rem', color: 'var(--color-text-muted)' }}>Aucun client trouve</td></tr>
+                                    <tr>
+                                        <td
+                                            colSpan={5}
+                                            style={{
+                                                textAlign: 'center',
+                                                padding: '2rem',
+                                                color: 'var(--color-text-muted)',
+                                            }}
+                                        >
+                                            Aucun client trouve
+                                        </td>
+                                    </tr>
                                 )}
                             </tbody>
                         </table>

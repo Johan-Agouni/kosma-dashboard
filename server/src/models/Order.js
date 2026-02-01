@@ -54,8 +54,8 @@ const orderSchema = new mongoose.Schema(
 
         // Montants
         subtotal: { type: Number, required: true },
-        tax: { type: Number, default: 0 },          // TVA 20% en France
-        shippingCost: { type: Number, default: 0 },  // gratuit au-dessus de 50€
+        tax: { type: Number, default: 0 }, // TVA 20% en France
+        shippingCost: { type: Number, default: 0 }, // gratuit au-dessus de 50€
         total: { type: Number, required: true },
 
         // Workflow

@@ -8,9 +8,7 @@ const authorize = (...roles) => {
 
         if (!roles.includes(req.user.role)) {
             return next(
-                ApiError.forbidden(
-                    `Role '${req.user.role}' non autorise pour cette action`
-                )
+                ApiError.forbidden(`Role '${req.user.role}' non autorise pour cette action`)
             );
         }
 

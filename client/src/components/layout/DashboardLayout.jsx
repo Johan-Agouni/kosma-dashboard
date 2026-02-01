@@ -26,7 +26,14 @@ const DashboardLayout = () => {
                     onClick={() => setSidebarOpen(true)}
                     aria-label="Ouvrir le menu de navigation"
                 >
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} width={22} height={22}>
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                        width={22}
+                        height={22}
+                    >
                         <path strokeLinecap="round" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>

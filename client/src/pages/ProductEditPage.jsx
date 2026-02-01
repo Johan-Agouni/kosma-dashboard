@@ -8,15 +8,23 @@ import LoadingSpinner from '../components/common/LoadingSpinner';
 import toast from 'react-hot-toast';
 
 const fieldStyle = {
-    display: 'flex', flexDirection: 'column', gap: '0.375rem',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.375rem',
 };
 const labelStyle = {
-    fontSize: 'var(--font-size-sm)', fontWeight: 500, color: 'var(--color-text-secondary)',
+    fontSize: 'var(--font-size-sm)',
+    fontWeight: 500,
+    color: 'var(--color-text-secondary)',
 };
 const inputStyle = {
-    padding: '0.625rem 0.875rem', background: 'var(--color-bg-input)',
-    border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)',
-    color: 'var(--color-text-primary)', fontSize: 'var(--font-size-sm)', outline: 'none',
+    padding: '0.625rem 0.875rem',
+    background: 'var(--color-bg-input)',
+    border: '1px solid var(--color-border)',
+    borderRadius: 'var(--radius-md)',
+    color: 'var(--color-text-primary)',
+    fontSize: 'var(--font-size-sm)',
+    outline: 'none',
 };
 
 const ProductEditPage = () => {
@@ -25,24 +33,40 @@ const ProductEditPage = () => {
     const isEdit = Boolean(id);
 
     const [form, setForm] = useState({
-        name: '', description: '', price: '', stock: '', sku: '', category: '', status: 'draft', tags: '',
+        name: '',
+        description: '',
+        price: '',
+        stock: '',
+        sku: '',
+        category: '',
+        status: 'draft',
+        tags: '',
     });
     const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(isEdit);
     const [saving, setSaving] = useState(false);
 
     useEffect(() => {
-        getCategoriesApi().then(res => setCategories(res.data.data)).catch(() => {});
+        getCategoriesApi()
+            .then(res => setCategories(res.data.data))
+            .catch(() => {});
         if (isEdit) {
-            getProductApi(id).then(res => {
-                const p = res.data.data;
-                setForm({
-                    name: p.name, description: p.description || '', price: p.price,
-                    stock: p.stock, sku: p.sku || '', category: p.category?._id || '',
-                    status: p.status, tags: p.tags?.join(', ') || '',
-                });
-            }).catch(() => toast.error('Produit introuvable'))
-              .finally(() => setLoading(false));
+            getProductApi(id)
+                .then(res => {
+                    const p = res.data.data;
+                    setForm({
+                        name: p.name,
+                        description: p.description || '',
+                        price: p.price,
+                        stock: p.stock,
+                        sku: p.sku || '',
+                        category: p.category?._id || '',
+                        status: p.status,
+                        tags: p.tags?.join(', ') || '',
+                    });
+                })
+                .catch(() => toast.error('Produit introuvable'))
+                .finally(() => setLoading(false));
         }
     }, [id, isEdit]);
 
@@ -79,42 +103,113 @@ const ProductEditPage = () => {
         <div>
             <Header title={isEdit ? 'Modifier le produit' : 'Nouveau produit'} />
             <div className="card" style={{ maxWidth: 640, marginTop: 'var(--spacing-xl)' }}>
-                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-md)' }}>
+                <form
+                    onSubmit={handleSubmit}
+                    style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-md)' }}
+                >
                     <div style={fieldStyle}>
                         <label style={labelStyle}>Nom *</label>
-                        <input style={inputStyle} name="name" value={form.name} onChange={handleChange} required maxLength={200} />
+                        <input
+                            style={inputStyle}
+                            name="name"
+                            value={form.name}
+                            onChange={handleChange}
+                            required
+                            maxLength={200}
+                        />
                     </div>
                     <div style={fieldStyle}>
                         <label style={labelStyle}>Description</label>
-                        <textarea style={{ ...inputStyle, minHeight: 80, resize: 'vertical' }} name="description" value={form.description} onChange={handleChange} maxLength={2000} />
+                        <textarea
+                            style={{ ...inputStyle, minHeight: 80, resize: 'vertical' }}
+                            name="description"
+                            value={form.description}
+                            onChange={handleChange}
+                            maxLength={2000}
+                        />
                     </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--spacing-md)' }}>
+                    <div
+                        style={{
+                            display: 'grid',
+                            gridTemplateColumns: '1fr 1fr',
+                            gap: 'var(--spacing-md)',
+                        }}
+                    >
                         <div style={fieldStyle}>
                             <label style={labelStyle}>Prix (EUR) *</label>
-                            <input style={inputStyle} name="price" type="number" step="0.01" min="0" value={form.price} onChange={handleChange} required />
+                            <input
+                                style={inputStyle}
+                                name="price"
+                                type="number"
+                                step="0.01"
+                                min="0"
+                                value={form.price}
+                                onChange={handleChange}
+                                required
+                            />
                         </div>
                         <div style={fieldStyle}>
                             <label style={labelStyle}>Stock *</label>
-                            <input style={inputStyle} name="stock" type="number" min="0" value={form.stock} onChange={handleChange} required />
+                            <input
+                                style={inputStyle}
+                                name="stock"
+                                type="number"
+                                min="0"
+                                value={form.stock}
+                                onChange={handleChange}
+                                required
+                            />
                         </div>
                     </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--spacing-md)' }}>
+                    <div
+                        style={{
+                            display: 'grid',
+                            gridTemplateColumns: '1fr 1fr',
+                            gap: 'var(--spacing-md)',
+                        }}
+                    >
                         <div style={fieldStyle}>
                             <label style={labelStyle}>SKU</label>
-                            <input style={inputStyle} name="sku" value={form.sku} onChange={handleChange} />
+                            <input
+                                style={inputStyle}
+                                name="sku"
+                                value={form.sku}
+                                onChange={handleChange}
+                            />
                         </div>
                         <div style={fieldStyle}>
                             <label style={labelStyle}>Categorie *</label>
-                            <select style={inputStyle} name="category" value={form.category} onChange={handleChange} required>
+                            <select
+                                style={inputStyle}
+                                name="category"
+                                value={form.category}
+                                onChange={handleChange}
+                                required
+                            >
                                 <option value="">Choisir...</option>
-                                {categories.map(c => <option key={c._id} value={c._id}>{c.name}</option>)}
+                                {categories.map(c => (
+                                    <option key={c._id} value={c._id}>
+                                        {c.name}
+                                    </option>
+                                ))}
                             </select>
                         </div>
                     </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--spacing-md)' }}>
+                    <div
+                        style={{
+                            display: 'grid',
+                            gridTemplateColumns: '1fr 1fr',
+                            gap: 'var(--spacing-md)',
+                        }}
+                    >
                         <div style={fieldStyle}>
                             <label style={labelStyle}>Statut</label>
-                            <select style={inputStyle} name="status" value={form.status} onChange={handleChange}>
+                            <select
+                                style={inputStyle}
+                                name="status"
+                                value={form.status}
+                                onChange={handleChange}
+                            >
                                 <option value="draft">Brouillon</option>
                                 <option value="active">Actif</option>
                                 <option value="archived">Archive</option>
@@ -122,12 +217,26 @@ const ProductEditPage = () => {
                         </div>
                         <div style={fieldStyle}>
                             <label style={labelStyle}>Tags (separes par des virgules)</label>
-                            <input style={inputStyle} name="tags" value={form.tags} onChange={handleChange} placeholder="tech, promo" />
+                            <input
+                                style={inputStyle}
+                                name="tags"
+                                value={form.tags}
+                                onChange={handleChange}
+                                placeholder="tech, promo"
+                            />
                         </div>
                     </div>
                     <div style={{ display: 'flex', gap: '1rem', marginTop: 'var(--spacing-md)' }}>
-                        <Button type="submit" loading={saving}>{isEdit ? 'Mettre a jour' : 'Creer le produit'}</Button>
-                        <Button type="button" variant="secondary" onClick={() => navigate('/products')}>Annuler</Button>
+                        <Button type="submit" loading={saving}>
+                            {isEdit ? 'Mettre a jour' : 'Creer le produit'}
+                        </Button>
+                        <Button
+                            type="button"
+                            variant="secondary"
+                            onClick={() => navigate('/products')}
+                        >
+                            Annuler
+                        </Button>
                     </div>
                 </form>
             </div>

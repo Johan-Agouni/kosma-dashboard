@@ -43,10 +43,14 @@ app.use(parameterPollution);
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // ─── API Documentation ──────────────────────────────────────────
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
-    customCss: '.swagger-ui .topbar { display: none }',
-    customSiteTitle: 'Kosma API Documentation',
-}));
+app.use(
+    '/api-docs',
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerSpec, {
+        customCss: '.swagger-ui .topbar { display: none }',
+        customSiteTitle: 'Kosma API Documentation',
+    })
+);
 app.get('/api-docs.json', (_req, res) => res.json(swaggerSpec));
 
 // ─── Health Check ────────────────────────────────────────────────

@@ -183,9 +183,7 @@ const deleteImage = asyncHandler(async (req, res) => {
         throw ApiError.notFound('Produit introuvable');
     }
 
-    product.images = product.images.filter(
-        img => img._id.toString() !== req.params.imageId
-    );
+    product.images = product.images.filter(img => img._id.toString() !== req.params.imageId);
     await product.save();
 
     res.json({
@@ -202,21 +200,14 @@ const deleteImage = asyncHandler(async (req, res) => {
 // Export brut du catalogue en CSV. Le BOM UTF-8 (\uFEFF) en tete
 // permet a Excel d'ouvrir le fichier correctement avec les accents.
 const exportCSV = asyncHandler(async (_req, res) => {
-    const products = await Product.find()
-        .populate('category', 'name')
-        .lean();
+    const products = await Product.find().populate('category', 'name').lean();
 
     const headers = 'Nom,SKU,Prix,Stock,Categorie,Statut\n';
     const rows = products
         .map(p =>
-            [
-                `"${p.name}"`,
-                p.sku || '',
-                p.price,
-                p.stock,
-                p.category?.name || '',
-                p.status,
-            ].join(',')
+            [`"${p.name}"`, p.sku || '', p.price, p.stock, p.category?.name || '', p.status].join(
+                ','
+            )
         )
         .join('\n');
 

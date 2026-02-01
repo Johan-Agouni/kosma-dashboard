@@ -23,10 +23,7 @@ describe('Category Routes', () => {
 
     describe('GET /api/v1/categories', () => {
         test('lists all categories', async () => {
-            await Category.create([
-                { name: 'Electronics' },
-                { name: 'Clothing' },
-            ]);
+            await Category.create([{ name: 'Electronics' }, { name: 'Clothing' }]);
 
             const res = await request(app)
                 .get('/api/v1/categories')

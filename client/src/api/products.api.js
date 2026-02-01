@@ -10,5 +10,4 @@ export const uploadImagesApi = (id, formData) =>
         headers: { 'Content-Type': 'multipart/form-data' },
     });
 export const deleteImageApi = (id, imageId) => api.delete(`/products/${id}/images/${imageId}`);
-export const exportCSVApi = () =>
-    api.get('/products/export/csv', { responseType: 'blob' });
+export const exportCSVApi = () => api.get('/products/export/csv', { responseType: 'blob' });

@@ -46,7 +46,11 @@ export const DashboardSkeleton = () => (
                     <Block height="0.875rem" />
                     <Block height="0.875rem" />
                     <Block height="0.875rem" width="60%" />
-                    <Block height="1.25rem" width="70px" style={{ borderRadius: 'var(--radius-sm)' }} />
+                    <Block
+                        height="1.25rem"
+                        width="70px"
+                        style={{ borderRadius: 'var(--radius-sm)' }}
+                    />
                     <Block height="0.875rem" width="50%" />
                 </div>
             ))}
@@ -58,9 +62,13 @@ export const DashboardSkeleton = () => (
 export const TableSkeleton = ({ columns = 6, rows = 8 }) => (
     <div className={styles.chartCard}>
         {Array.from({ length: rows }).map((_, i) => (
-            <div key={i} className={styles.tableRow} style={{
-                gridTemplateColumns: `repeat(${columns}, 1fr)`,
-            }}>
+            <div
+                key={i}
+                className={styles.tableRow}
+                style={{
+                    gridTemplateColumns: `repeat(${columns}, 1fr)`,
+                }}
+            >
                 {Array.from({ length: columns }).map((_, j) => (
                     <Block key={j} height="0.875rem" width={j === 0 ? '80%' : '60%'} />
                 ))}

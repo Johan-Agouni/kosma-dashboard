@@ -1,5 +1,10 @@
 import { useState, useEffect } from 'react';
-import { getCategoriesApi, createCategoryApi, updateCategoryApi, deleteCategoryApi } from '../api/categories.api';
+import {
+    getCategoriesApi,
+    createCategoryApi,
+    updateCategoryApi,
+    deleteCategoryApi,
+} from '../api/categories.api';
 import Header from '../components/layout/Header';
 import Button from '../components/common/Button';
 import Modal from '../components/common/Modal';
@@ -25,7 +30,9 @@ const CategoriesPage = () => {
         }
     };
 
-    useEffect(() => { fetchCategories(); }, []);
+    useEffect(() => {
+        fetchCategories();
+    }, []);
 
     const openCreate = () => {
         setForm({ name: '', description: '' });
@@ -70,9 +77,14 @@ const CategoriesPage = () => {
     if (loading) return <LoadingSpinner fullPage />;
 
     const inputStyle = {
-        padding: '0.625rem 0.875rem', background: 'var(--color-bg-input)',
-        border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)',
-        color: 'var(--color-text-primary)', fontSize: 'var(--font-size-sm)', width: '100%', outline: 'none',
+        padding: '0.625rem 0.875rem',
+        background: 'var(--color-bg-input)',
+        border: '1px solid var(--color-border)',
+        borderRadius: 'var(--radius-md)',
+        color: 'var(--color-text-primary)',
+        fontSize: 'var(--font-size-sm)',
+        width: '100%',
+        outline: 'none',
     };
 
     return (
@@ -98,12 +110,26 @@ const CategoriesPage = () => {
                             {categories.map(cat => (
                                 <tr key={cat._id}>
                                     <td style={{ fontWeight: 500 }}>{cat.name}</td>
-                                    <td style={{ color: 'var(--color-text-secondary)' }}>{cat.description || '-'}</td>
+                                    <td style={{ color: 'var(--color-text-secondary)' }}>
+                                        {cat.description || '-'}
+                                    </td>
                                     <td>{cat.productCount}</td>
                                     <td>
                                         <div style={{ display: 'flex', gap: '0.5rem' }}>
-                                            <Button size="sm" variant="secondary" onClick={() => openEdit(cat)}>Modifier</Button>
-                                            <Button size="sm" variant="danger" onClick={() => handleDelete(cat._id, cat.name)}>Supprimer</Button>
+                                            <Button
+                                                size="sm"
+                                                variant="secondary"
+                                                onClick={() => openEdit(cat)}
+                                            >
+                                                Modifier
+                                            </Button>
+                                            <Button
+                                                size="sm"
+                                                variant="danger"
+                                                onClick={() => handleDelete(cat._id, cat.name)}
+                                            >
+                                                Supprimer
+                                            </Button>
                                         </div>
                                     </td>
                                 </tr>
@@ -112,15 +138,53 @@ const CategoriesPage = () => {
                     </table>
                 </div>
 
-                <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} title={editId ? 'Modifier la categorie' : 'Nouvelle categorie'}>
-                    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-md)' }}>
+                <Modal
+                    isOpen={modalOpen}
+                    onClose={() => setModalOpen(false)}
+                    title={editId ? 'Modifier la categorie' : 'Nouvelle categorie'}
+                >
+                    <form
+                        onSubmit={handleSubmit}
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: 'var(--spacing-md)',
+                        }}
+                    >
                         <div>
-                            <label style={{ display: 'block', marginBottom: 4, fontSize: 'var(--font-size-sm)', color: 'var(--color-text-secondary)' }}>Nom *</label>
-                            <input style={inputStyle} value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} required />
+                            <label
+                                style={{
+                                    display: 'block',
+                                    marginBottom: 4,
+                                    fontSize: 'var(--font-size-sm)',
+                                    color: 'var(--color-text-secondary)',
+                                }}
+                            >
+                                Nom *
+                            </label>
+                            <input
+                                style={inputStyle}
+                                value={form.name}
+                                onChange={e => setForm({ ...form, name: e.target.value })}
+                                required
+                            />
                         </div>
                         <div>
-                            <label style={{ display: 'block', marginBottom: 4, fontSize: 'var(--font-size-sm)', color: 'var(--color-text-secondary)' }}>Description</label>
-                            <textarea style={{ ...inputStyle, minHeight: 60, resize: 'vertical' }} value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} />
+                            <label
+                                style={{
+                                    display: 'block',
+                                    marginBottom: 4,
+                                    fontSize: 'var(--font-size-sm)',
+                                    color: 'var(--color-text-secondary)',
+                                }}
+                            >
+                                Description
+                            </label>
+                            <textarea
+                                style={{ ...inputStyle, minHeight: 60, resize: 'vertical' }}
+                                value={form.description}
+                                onChange={e => setForm({ ...form, description: e.target.value })}
+                            />
                         </div>
                         <Button type="submit">{editId ? 'Mettre a jour' : 'Creer'}</Button>
                     </form>

@@ -44,15 +44,24 @@ const OrdersPage = () => {
                 <div className="page-header">
                     <select
                         value={statusFilter}
-                        onChange={e => { setStatusFilter(e.target.value); setPage(1); }}
+                        onChange={e => {
+                            setStatusFilter(e.target.value);
+                            setPage(1);
+                        }}
                         style={{
-                            padding: '0.5rem', background: 'var(--color-bg-input)', border: '1px solid var(--color-border)',
-                            borderRadius: 'var(--radius-md)', color: 'var(--color-text-primary)', fontSize: 'var(--font-size-sm)',
+                            padding: '0.5rem',
+                            background: 'var(--color-bg-input)',
+                            border: '1px solid var(--color-border)',
+                            borderRadius: 'var(--radius-md)',
+                            color: 'var(--color-text-primary)',
+                            fontSize: 'var(--font-size-sm)',
                         }}
                     >
                         <option value="">Tous les statuts</option>
                         {Object.entries(ORDER_STATUSES).map(([key, val]) => (
-                            <option key={key} value={key}>{val.label}</option>
+                            <option key={key} value={key}>
+                                {val.label}
+                            </option>
                         ))}
                     </select>
                 </div>
@@ -74,17 +83,39 @@ const OrdersPage = () => {
                             </thead>
                             <tbody>
                                 {orders.map(order => (
-                                    <tr key={order._id} onClick={() => navigate(`/orders/${order._id}`)} style={{ cursor: 'pointer' }}>
+                                    <tr
+                                        key={order._id}
+                                        onClick={() => navigate(`/orders/${order._id}`)}
+                                        style={{ cursor: 'pointer' }}
+                                    >
                                         <td className={styles.orderNum}>{order.orderNumber}</td>
                                         <td>{order.customer?.name}</td>
                                         <td>{formatCurrency(order.total)}</td>
                                         <td>{PAYMENT_METHODS[order.paymentMethod]}</td>
-                                        <td><StatusBadge status={order.status} statusMap={ORDER_STATUSES} /></td>
-                                        <td className={styles.dateCell}>{formatDate(order.createdAt)}</td>
+                                        <td>
+                                            <StatusBadge
+                                                status={order.status}
+                                                statusMap={ORDER_STATUSES}
+                                            />
+                                        </td>
+                                        <td className={styles.dateCell}>
+                                            {formatDate(order.createdAt)}
+                                        </td>
                                     </tr>
                                 ))}
                                 {orders.length === 0 && (
-                                    <tr><td colSpan={6} style={{ textAlign: 'center', padding: '2rem', color: 'var(--color-text-muted)' }}>Aucune commande</td></tr>
+                                    <tr>
+                                        <td
+                                            colSpan={6}
+                                            style={{
+                                                textAlign: 'center',
+                                                padding: '2rem',
+                                                color: 'var(--color-text-muted)',
+                                            }}
+                                        >
+                                            Aucune commande
+                                        </td>
+                                    </tr>
                                 )}
                             </tbody>
                         </table>

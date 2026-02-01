@@ -25,17 +25,11 @@ describe('Auth Routes', () => {
 
         test('fails with duplicate email', async () => {
             await User.create(validUser);
-            await request(app)
-                .post('/api/v1/auth/register')
-                .send(validUser)
-                .expect(409);
+            await request(app).post('/api/v1/auth/register').send(validUser).expect(409);
         });
 
         test('fails with invalid data', async () => {
-            await request(app)
-                .post('/api/v1/auth/register')
-                .send({ email: 'bad' })
-                .expect(400);
+            await request(app).post('/api/v1/auth/register').send({ email: 'bad' }).expect(400);
         });
     });
 
@@ -71,9 +65,7 @@ describe('Auth Routes', () => {
 
     describe('GET /api/v1/auth/me', () => {
         test('returns user profile with valid token', async () => {
-            const registerRes = await request(app)
-                .post('/api/v1/auth/register')
-                .send(validUser);
+            const registerRes = await request(app).post('/api/v1/auth/register').send(validUser);
 
             const token = registerRes.body.data.accessToken;
 
@@ -99,9 +91,7 @@ describe('Auth Routes', () => {
 
     describe('POST /api/v1/auth/refresh', () => {
         test('refreshes tokens', async () => {
-            const registerRes = await request(app)
-                .post('/api/v1/auth/register')
-                .send(validUser);
+            const registerRes = await request(app).post('/api/v1/auth/register').send(validUser);
 
             const refreshToken = registerRes.body.data.refreshToken;
 

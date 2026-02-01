@@ -39,20 +39,47 @@ const RegisterPage = () => {
                     <div className={styles.row}>
                         <div className={styles.field}>
                             <label htmlFor="firstName">Prenom</label>
-                            <input id="firstName" name="firstName" value={form.firstName} onChange={handleChange} required />
+                            <input
+                                id="firstName"
+                                name="firstName"
+                                value={form.firstName}
+                                onChange={handleChange}
+                                required
+                            />
                         </div>
                         <div className={styles.field}>
                             <label htmlFor="lastName">Nom</label>
-                            <input id="lastName" name="lastName" value={form.lastName} onChange={handleChange} required />
+                            <input
+                                id="lastName"
+                                name="lastName"
+                                value={form.lastName}
+                                onChange={handleChange}
+                                required
+                            />
                         </div>
                     </div>
                     <div className={styles.field}>
                         <label htmlFor="email">Email</label>
-                        <input id="email" name="email" type="email" value={form.email} onChange={handleChange} required />
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            value={form.email}
+                            onChange={handleChange}
+                            required
+                        />
                     </div>
                     <div className={styles.field}>
                         <label htmlFor="password">Mot de passe</label>
-                        <input id="password" name="password" type="password" value={form.password} onChange={handleChange} minLength={8} required />
+                        <input
+                            id="password"
+                            name="password"
+                            type="password"
+                            value={form.password}
+                            onChange={handleChange}
+                            minLength={8}
+                            required
+                        />
                         <small>Min. 8 caracteres, 1 majuscule, 1 chiffre</small>
                     </div>
                     <button type="submit" className={styles.submitBtn} disabled={loading}>

@@ -35,7 +35,7 @@ const options = {
         security: [{ bearerAuth: [] }],
         tags: [
             { name: 'Auth', description: 'Authentification et gestion de compte' },
-            { name: 'Dashboard', description: 'Statistiques et vue d\'ensemble' },
+            { name: 'Dashboard', description: "Statistiques et vue d'ensemble" },
             { name: 'Products', description: 'Gestion des produits' },
             { name: 'Orders', description: 'Gestion des commandes' },
             { name: 'Customers', description: 'Gestion des clients' },

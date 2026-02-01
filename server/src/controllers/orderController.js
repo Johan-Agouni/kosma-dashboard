@@ -17,8 +17,8 @@ const VALID_TRANSITIONS = {
     pending: ['confirmed', 'cancelled'],
     confirmed: ['shipped', 'cancelled'],
     shipped: ['delivered'],
-    delivered: [],   // statut final
-    cancelled: [],   // statut final
+    delivered: [], // statut final
+    cancelled: [], // statut final
 };
 
 // ──────────────────────────────────────────
@@ -82,9 +82,7 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
     // Verification de la transition via la machine a etats
     const allowedTransitions = VALID_TRANSITIONS[order.status];
     if (!allowedTransitions.includes(status)) {
-        throw ApiError.badRequest(
-            `Transition de '${order.status}' vers '${status}' non autorisee`
-        );
+        throw ApiError.badRequest(`Transition de '${order.status}' vers '${status}' non autorisee`);
     }
 
     order.status = status;

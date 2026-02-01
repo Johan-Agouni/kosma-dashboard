@@ -76,7 +76,7 @@ export const AuthProvider = ({ children }) => {
         return data.data.user;
     };
 
-    const register = async (userData) => {
+    const register = async userData => {
         const { data } = await registerApi(userData);
         localStorage.setItem('accessToken', data.data.accessToken);
         localStorage.setItem('refreshToken', data.data.refreshToken);
@@ -97,7 +97,7 @@ export const AuthProvider = ({ children }) => {
         dispatch({ type: 'AUTH_LOGOUT' });
     };
 
-    const updateUser = (userData) => {
+    const updateUser = userData => {
         dispatch({ type: 'UPDATE_USER', payload: userData });
     };
 

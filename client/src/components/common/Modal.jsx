@@ -6,7 +6,9 @@ const Modal = ({ isOpen, onClose, title, children }) => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
         }
-        return () => { document.body.style.overflow = ''; };
+        return () => {
+            document.body.style.overflow = '';
+        };
     }, [isOpen]);
 
     if (!isOpen) return null;
@@ -16,7 +18,9 @@ const Modal = ({ isOpen, onClose, title, children }) => {
             <div className={styles.modal} onClick={e => e.stopPropagation()}>
                 <div className={styles.header}>
                     <h3>{title}</h3>
-                    <button className={styles.close} onClick={onClose}>&times;</button>
+                    <button className={styles.close} onClick={onClose}>
+                        &times;
+                    </button>
                 </div>
                 <div className={styles.body}>{children}</div>
             </div>

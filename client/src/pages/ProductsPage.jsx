@@ -73,13 +73,27 @@ const ProductsPage = () => {
                 {/* Barre de recherche + filtre statut + bouton creation */}
                 <div className="page-header">
                     <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                        <SearchBar value={search} onChange={v => { setSearch(v); setPage(1); }} placeholder="Rechercher un produit..." />
+                        <SearchBar
+                            value={search}
+                            onChange={v => {
+                                setSearch(v);
+                                setPage(1);
+                            }}
+                            placeholder="Rechercher un produit..."
+                        />
                         <select
                             value={statusFilter}
-                            onChange={e => { setStatusFilter(e.target.value); setPage(1); }}
+                            onChange={e => {
+                                setStatusFilter(e.target.value);
+                                setPage(1);
+                            }}
                             style={{
-                                padding: '0.5rem', background: 'var(--color-bg-input)', border: '1px solid var(--color-border)',
-                                borderRadius: 'var(--radius-md)', color: 'var(--color-text-primary)', fontSize: 'var(--font-size-sm)',
+                                padding: '0.5rem',
+                                background: 'var(--color-bg-input)',
+                                border: '1px solid var(--color-border)',
+                                borderRadius: 'var(--radius-md)',
+                                color: 'var(--color-text-primary)',
+                                fontSize: 'var(--font-size-sm)',
                             }}
                         >
                             <option value="">Tous les statuts</option>
@@ -112,26 +126,70 @@ const ProductsPage = () => {
                                 {products.map(p => (
                                     <tr key={p._id}>
                                         <td style={{ fontWeight: 500 }}>{p.name}</td>
-                                        <td style={{ color: 'var(--color-text-muted)', fontFamily: 'monospace' }}>{p.sku || '-'}</td>
+                                        <td
+                                            style={{
+                                                color: 'var(--color-text-muted)',
+                                                fontFamily: 'monospace',
+                                            }}
+                                        >
+                                            {p.sku || '-'}
+                                        </td>
                                         <td>{formatCurrency(p.price)}</td>
-                                        <td style={{ color: p.stock <= (p.lowStockThreshold || 10) ? 'var(--color-danger)' : 'inherit' }}>
+                                        <td
+                                            style={{
+                                                color:
+                                                    p.stock <= (p.lowStockThreshold || 10)
+                                                        ? 'var(--color-danger)'
+                                                        : 'inherit',
+                                            }}
+                                        >
                                             {p.stock}
                                         </td>
-                                        <td><StatusBadge status={p.status} statusMap={PRODUCT_STATUSES} /></td>
+                                        <td>
+                                            <StatusBadge
+                                                status={p.status}
+                                                statusMap={PRODUCT_STATUSES}
+                                            />
+                                        </td>
                                         <td>
                                             <div style={{ display: 'flex', gap: '0.5rem' }}>
                                                 {hasRole('admin', 'manager') && (
-                                                    <Button size="sm" variant="secondary" onClick={() => navigate(`/products/${p._id}/edit`)}>Modifier</Button>
+                                                    <Button
+                                                        size="sm"
+                                                        variant="secondary"
+                                                        onClick={() =>
+                                                            navigate(`/products/${p._id}/edit`)
+                                                        }
+                                                    >
+                                                        Modifier
+                                                    </Button>
                                                 )}
                                                 {hasRole('admin') && (
-                                                    <Button size="sm" variant="danger" onClick={() => handleDelete(p._id, p.name)}>Supprimer</Button>
+                                                    <Button
+                                                        size="sm"
+                                                        variant="danger"
+                                                        onClick={() => handleDelete(p._id, p.name)}
+                                                    >
+                                                        Supprimer
+                                                    </Button>
                                                 )}
                                             </div>
                                         </td>
                                     </tr>
                                 ))}
                                 {products.length === 0 && (
-                                    <tr><td colSpan={6} style={{ textAlign: 'center', padding: '2rem', color: 'var(--color-text-muted)' }}>Aucun produit trouve</td></tr>
+                                    <tr>
+                                        <td
+                                            colSpan={6}
+                                            style={{
+                                                textAlign: 'center',
+                                                padding: '2rem',
+                                                color: 'var(--color-text-muted)',
+                                            }}
+                                        >
+                                            Aucun produit trouve
+                                        </td>
+                                    </tr>
                                 )}
                             </tbody>
                         </table>
