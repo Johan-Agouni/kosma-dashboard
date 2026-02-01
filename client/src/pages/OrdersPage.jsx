@@ -67,7 +67,7 @@ const OrdersPage = () => {
                 </div>
 
                 {loading ? (
-                    <TableSkeleton columns={6} rows={8} />
+                    <TableSkeleton columns={7} rows={8} />
                 ) : (
                     <div className="card">
                         <table className={styles.table}>
@@ -79,6 +79,7 @@ const OrdersPage = () => {
                                     <th>Paiement</th>
                                     <th>Statut</th>
                                     <th>Date</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -101,12 +102,48 @@ const OrdersPage = () => {
                                         <td className={styles.dateCell}>
                                             {formatDate(order.createdAt)}
                                         </td>
+                                        <td>
+                                            <button
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    navigate(`/orders/${order._id}`);
+                                                }}
+                                                title="Voir le détail"
+                                                style={{
+                                                    background: 'none',
+                                                    border: '1px solid var(--color-border)',
+                                                    borderRadius: 'var(--radius-md)',
+                                                    padding: '0.4rem 0.6rem',
+                                                    cursor: 'pointer',
+                                                    color: 'var(--color-text-secondary)',
+                                                    display: 'inline-flex',
+                                                    alignItems: 'center',
+                                                    gap: '0.3rem',
+                                                    fontSize: 'var(--font-size-sm)',
+                                                    transition: 'all 0.2s',
+                                                }}
+                                                onMouseEnter={(e) => {
+                                                    e.currentTarget.style.borderColor = 'var(--color-accent)';
+                                                    e.currentTarget.style.color = 'var(--color-accent)';
+                                                }}
+                                                onMouseLeave={(e) => {
+                                                    e.currentTarget.style.borderColor = 'var(--color-border)';
+                                                    e.currentTarget.style.color = 'var(--color-text-secondary)';
+                                                }}
+                                            >
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                                    <circle cx="12" cy="12" r="3"/>
+                                                </svg>
+                                                Voir
+                                            </button>
+                                        </td>
                                     </tr>
                                 ))}
                                 {orders.length === 0 && (
                                     <tr>
                                         <td
-                                            colSpan={6}
+                                            colSpan={7}
                                             style={{
                                                 textAlign: 'center',
                                                 padding: '2rem',
