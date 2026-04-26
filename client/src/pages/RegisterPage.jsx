@@ -17,10 +17,10 @@ const RegisterPage = () => {
         setLoading(true);
         try {
             await register(form);
-            toast.success('Compte cree avec succes');
+            toast.success('Compte créé avec succès');
             navigate('/');
         } catch (err) {
-            toast.error(err.response?.data?.message || 'Erreur lors de la creation');
+            toast.error(err.response?.data?.message || 'Erreur lors de la création');
         } finally {
             setLoading(false);
         }
@@ -55,12 +55,12 @@ const RegisterPage = () => {
                     </span>
                     <h1>Kosma</h1>
                 </div>
-                <p className={styles.subtitle}>Creer votre compte</p>
+                <p className={styles.subtitle}>Créer votre compte</p>
 
                 <form onSubmit={handleSubmit} className={styles.form}>
                     <div className={styles.row}>
-                        <div className={styles.field}>
-                            <label htmlFor="firstName">Prenom</label>
+                        <div className={styles.field} style={{ minWidth: 0 }}>
+                            <label htmlFor="firstName">Prénom</label>
                             <input
                                 id="firstName"
                                 name="firstName"
@@ -69,7 +69,7 @@ const RegisterPage = () => {
                                 required
                             />
                         </div>
-                        <div className={styles.field}>
+                        <div className={styles.field} style={{ minWidth: 0 }}>
                             <label htmlFor="lastName">Nom</label>
                             <input
                                 id="lastName"
@@ -102,15 +102,15 @@ const RegisterPage = () => {
                             minLength={8}
                             required
                         />
-                        <small>Min. 8 caracteres, 1 majuscule, 1 chiffre</small>
+                        <small>Min. 8 caractères, 1 majuscule, 1 chiffre</small>
                     </div>
                     <button type="submit" className={styles.submitBtn} disabled={loading}>
-                        {loading ? 'Creation...' : 'Creer mon compte'}
+                        {loading ? 'Création...' : 'Créer mon compte'}
                     </button>
                 </form>
 
                 <p className={styles.footer}>
-                    Deja un compte ? <Link to="/login">Se connecter</Link>
+                    Déjà un compte ? <Link to="/login">Se connecter</Link>
                 </p>
             </div>
         </div>
