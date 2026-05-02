@@ -85,7 +85,7 @@ const LoginPage = () => {
                 </form>
 
                 <p className={styles.footer}>
-                    Pas de compte ? <Link to="/register">Creer un compte</Link>
+
                 </p>
             </div>
         </div>

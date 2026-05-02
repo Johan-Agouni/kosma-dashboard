@@ -11,14 +11,13 @@
  *                 ├─ /products, /orders, /customers, /categories
  *                 └─ /settings
  */
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import DashboardLayout from './components/layout/DashboardLayout';
 import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
 import ProductsPage from './pages/ProductsPage';
 import ProductEditPage from './pages/ProductEditPage';
@@ -47,7 +46,7 @@ const App = () => {
                     <Routes>
                         {/* Routes publiques */}
                         <Route path="/login" element={<LoginPage />} />
-                        <Route path="/register" element={<RegisterPage />} />
+                        <Route path="/register" element={<Navigate to="/login" replace />} />
 
                         {/* Routes protegees — redirige vers /login si non authentifie */}
                         <Route

@@ -34,7 +34,7 @@ const {
  *       201: { description: Compte cree }
  *       409: { description: Email deja utilise }
  */
-router.post('/register', authLimiter, validate(registerValidation), authController.register);
+// router.post('/register', authLimiter, validate(registerValidation), authController.register);
 
 /**
  * @swagger
